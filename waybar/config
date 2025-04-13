@@ -1,0 +1,104 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 24,
+    "spacing": 5,
+
+    "modules-left": ["hyprland/workspaces", "memory", "cpu", "temperature"],
+    "modules-center": ["clock", "custom/spotify"],
+    "modules-right": ["wireplumber", "battery", "backlight", "hyprland/language", "network", "bluetooth", "tray"],
+
+    "hyprland/workspaces": {
+        "format": "<span size='larger'>{icon}</span>",
+        "on-click": "activate",
+        "format-icons": {
+            "active": "\uf444",
+            "default": "\uf4c3"
+        },
+        "icon-size": 10,
+        "sort-by-number": true,
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+        }
+    },
+
+    "clock": {
+        "format": "{:%d.%m.%Y | %H:%M}"
+    },
+
+    "custom/spotify": {
+    	"format_old": "🎵 {}",
+	"format": " | {}",
+    	"exec": "~/.config/waybar/scripts/spotify.sh",
+    	"interval": 5,
+    	"return-type": "stdout",
+    	"on-click": "playerctl play-pause",
+    	"on-click-right": "playerctl next"
+    },
+
+
+    "wireplumber": {
+        "format": "\udb81\udd7e  {volume}%",
+        "max-volume": 100,
+        "scroll-step": 5,
+	"on-click": "pavucontrol"
+    },
+
+    "backlight": {
+        "format": "\udb80\udcdf  {percent}%"
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": "\uf4bc  {used:0.1f}G"
+    },
+
+    "cpu": {
+    	"format": " \uf2db {usage}%", 
+	"interval": 5,             
+	"format-icons": ["\uf2db"], 
+	"tooltip-format": "CPU usage: {usage}%"  
+    },
+
+
+    "temperature": {
+        "format": "  {temperatureC}°C"
+    },
+
+
+    "network": {
+        "format": "",
+        "format-ethernet": "\udb83\udc9d",
+    	"format-wifi": "{icon}",
+    	"format-disconnected": "\udb83\udc9c",
+    	"format-icons": ["\udb82\udd2f", "\udb82\udd1f", "\udb82\udd22", "\udb82\udd25", "\udb82\udd28"],
+    	"tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    	"tooltip-format-ethernet": "{ifname}",
+    	"tooltip-format-disconnected": "Disconnected",
+    	"on-click": "nm-connection-editor"
+    },
+
+
+    "bluetooth": {
+        "format": "\udb80\udcaf",
+        "format-disabled": "\udb80\udcb2",
+        "format-connected": "\udb80\udcb1",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	"on-click": "blueman-manager"
+    },
+
+    "hyprland/language": {
+        "format": "{short}"
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 16
+    }
+}
